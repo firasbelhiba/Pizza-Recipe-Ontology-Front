@@ -1,0 +1,129 @@
+<!-- <div class="row">
+    <form #voitureForm="ngForm" (ngSubmit)="Submit()">
+    <div class="form-group">
+        <input type="text" name="nom" [(ngModel)]="vehicule.name" #nom="ngModel" placeholder="Nom">
+    </div>
+    <div class="form-group">
+        <input type="text" name="marque" [(ngModel)]="vehicule.marque" #marque="ngModel" placeholder="Marque">
+    </div>
+    <div class="form-group">
+        <input type="text" name="type" [(ngModel)]="vehicule.type" #type="ngModel" placeholder="Type">
+    </div>
+    <div class="form-group">
+        <input type="text" name="couleur" [(ngModel)]="vehicule.couleur" #couleur="ngModel" placeholder="Couleur">
+    </div>
+    <div class="form-group">
+        <input type="number" name="nombreDePortes" [(ngModel)]="vehicule.nombreDePortes" #nombreDePortes="ngModel" placeholder="nombreDePortes">
+    </div>
+    <div class="form-group">
+        <input type="text" name="boite" [(ngModel)]="vehicule.boite" #boite="ngModel" placeholder="boite">
+    </div>
+    <div class="form-group">
+        <input type="text" name="cylindree" [(ngModel)]="vehicule.cylindree" #cylindree="ngModel" placeholder="cylindree">
+    </div>
+    <div class="form-group">
+        <input type="text" name="carburant" [(ngModel)]="vehicule.carburant" #carburant="ngModel" placeholder="carburant">
+    </div>
+    <button type="submit">Ajouter</button>
+    
+</form>
+</div> -->
+
+<div id="form-container">
+    <form #voitureForm="ngForm" (ngSubmit)="Submit()">
+
+    <dx-form id="form"
+        [colCount]="1"
+        [formData]="vehicule"
+        [showColonAfterLabel]="true"
+        [showValidationSummary]="true"
+        (onFieldDataChanged)="form_fieldDataChanged($event)">
+        <dxi-item itemType="group" caption="Information">
+            <dxi-item dataField="Name">
+                <dxo-label
+                text="Nom">
+            </dxo-label>
+                <dxi-validation-rule 
+                    type="required"
+                    message="Name is required">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="couleur"  helpText="Select a color from the color picker">
+                <dxo-label
+                text="Couleur">
+            </dxo-label>
+                <dxi-validation-rule 
+                    type="required"
+                    message="Couleur is required">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="nombreDePortes" editorType="dxNumberBox">
+                
+                <dxo-label
+                text="Nombre de portes">
+            </dxo-label>
+                <dxi-validation-rule 
+                    type="required"
+                    message="Nombre De Portes is required">
+                </dxi-validation-rule>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" caption="other Information">
+            <dxi-item dataField="type" editorType="dxSelectBox" [editorOptions]="{ items: types, searchEnabled: true, value: '' }">
+                <dxo-label
+                text="Type de voiture">
+            </dxo-label>
+            <dxi-validation-rule 
+                    type="required"
+                    message="Type is required">
+                </dxi-validation-rule>
+            </dxi-item>            
+            <dxi-item dataField="marque" editorType="dxSelectBox" [editorOptions]="{ items: marques, searchEnabled: true, value: '' }">
+                <dxo-label
+                text="Marque">
+            </dxo-label>
+            <dxi-validation-rule 
+                    type="required"
+                    message="Marque is required">
+                </dxi-validation-rule>
+                <!-- k <dxi-validation-rule type="required" message="Position is required"></dxi-validation-rule> -->
+             </dxi-item>
+        </dxi-item>
+        
+        <dxi-item itemType="group" caption="Moteur">
+            <dxi-item dataField="boite" editorType="dxSelectBox" [editorOptions]="{ items: boites, searchEnabled: true, value: '' }">
+                <dxo-label
+                text="Type de boite">
+            </dxo-label>
+            <dxi-validation-rule 
+                    type="required"
+                    message="Boite is required">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="cylindree" editorType="dxSelectBox" [editorOptions]="{ items: cylindrees, searchEnabled: true, value: '' }">
+                <dxo-label
+                text="Nombre de cylindres">
+            </dxo-label>
+            <dxi-validation-rule 
+                    type="required"
+                    message="Cylindree is required">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="carburant" editorType="dxSelectBox" [editorOptions]="{ items: carburants, searchEnabled: true, value: '' }">
+                <dxo-label
+                text="Type de carburant">
+            </dxo-label>
+            <dxi-validation-rule 
+                    type="required"
+                    message="Type de carburant is required">
+                </dxi-validation-rule>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item 
+        itemType="button"
+        horizontalAlignment="left"
+        [buttonOptions]="buttonOptions">
+    </dxi-item>
+    </dx-form>
+    </form>
+</div>

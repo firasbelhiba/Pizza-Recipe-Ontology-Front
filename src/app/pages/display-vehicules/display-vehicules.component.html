@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <div class="table-responsive" style="padding-top: 20px;">
+            <dx-data-grid 
+            style="padding: 20px;"
+            id="gridContainer" [dataSource]="dsControls" height="100%"
+            [allowColumnReordering]="true" [columnResizingMode]="widget" [allowColumnResizing]="true" [rowAlternationEnabled]="true" [selectedRowKeys]="[]" [showBorders]="true"
+            (onContentReady)="contentReady($event)"
+            (onRowDblClick)="onRowDblClick($event)"
+            (onToolbarPreparing)="onToolbarPreparing($event)"
+            (onInitialized)="onInitialized($event)">
+        
+            <dxo-selection mode="single"></dxo-selection>
+            <dxo-sorting mode="multiple"></dxo-sorting>
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-header-filter [visible]="true"></dxo-header-filter> 
+            <dxo-search-panel [visible]="true" [width]="200" placeholder="Search..."></dxo-search-panel>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-pager [allowedPageSizes]="[20,30,50,100]" [showInfo]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true" [visible]="true"> </dxo-pager>
+            <dxo-paging [pageSize]="20"></dxo-paging>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            <dxo-load-panel [enabled]="true"></dxo-load-panel>
+            <dxo-editing  mode="batch"  [allowDeleting]="true" [useIcons]="true"> </dxo-editing>
+            <dxi-column dataField="label" [width]="150" caption="Nom de voiture">
+                <dxo-header-filter [allowSearch]="true" ></dxo-header-filter>
+            </dxi-column>
+            <dxi-column dataField="fabriquePar " alignment="right"  caption="Marque"  [groupIndex]="0">
+                <dxo-header-filter [allowSearch]="true"></dxo-header-filter>
+            </dxi-column>
+            <dxi-column dataField="couleur" caption="Couleur" [width]="150"  >
+                <dxo-header-filter [allowSearch]="true"></dxo-header-filter>
+            </dxi-column>
+            <dxi-column dataField="nombredePorte"  caption="Nombre de portes"   >
+              <dxo-header-filter [allowSearch]="true"></dxo-header-filter>
+          </dxi-column>
+            <dxi-column dataField="consomme" caption="Consomme" [width]="150"  >
+                <dxo-header-filter [allowSearch]="true"></dxo-header-filter>
+            </dxi-column>
+            
+            <dxo-summary>
+              <dxi-group-item column="reference" summaryType="count" displayFormat="{0} voiture(s)"> </dxi-group-item>
+              <dxi-total-item column="reference" summaryType="count"> </dxi-total-item>
+            </dxo-summary>
+          </dx-data-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
